@@ -1,20 +1,20 @@
-import React from 'react'
+import {Fragment} from 'react'
 import QuoteItem from '../components/quotes/QuoteItem';
 import {useParams, Route} from 'react-router-dom';
+import Comments from '../components/comments/Comments'
 
 const QuoteDetail = () => {
     const params = useParams();
 
-    console.log(params.quoteId)
   return (
-    <section>
+    <Fragment>
     <h1>Quote Detail</h1>
     <p>{params.quoteId}</p>
     {/* <QuoteItem /> */}
     <Route path="/quotes/:quoteId/comments">
-        <p>Comments </p>    
+       <Comments />
     </Route>
-    </section>
+    </Fragment>
   )
 }
 

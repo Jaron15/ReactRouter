@@ -1,12 +1,12 @@
-import React from 'react'
+import {Fragment} from 'react'
 import QuoteForm from '../components/quotes/QuoteForm';
 
 const AddQuote = () => {
   return (
-    <section> 
+    <Fragment> 
     <h1>Add Quotes</h1>
     {/* <QuoteForm /> */}
-    </section>
+    </Fragment>
   )
 }
 

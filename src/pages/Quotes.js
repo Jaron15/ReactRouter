@@ -1,12 +1,12 @@
-import React from 'react'
+import {Fragment} from 'react'
 import QuoteList from '../components/quotes/QuoteList';
 
 const Quotes = () => {
   return (
-    <section>
+    <Fragment>
     <h1>All Quotes</h1>
     {/* <QuoteList /> */}
-    </section>
+    </Fragment>
   )
 }
 
