@@ -1,6 +1,6 @@
 import React from 'react'
 //the NavLink component allows you to load different pages without sending a new request every time 
-import { Navlink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import classes from './MainHeader.module.css'
 
 const MainHeader = () => {
@@ -9,10 +9,10 @@ const MainHeader = () => {
         <nav>
         <ul>
             <li>
-            <Navlink activeClassName={classes.active} to="/welcome">Welcome</Navlink>
+            <NavLink activeClassName={classes.active} to="/welcome">Welcome</NavLink>
             </li>
             <li>
-            <Navlink activeClassName={classes.active} to="/products">Products</Navlink>
+            <NavLink activeClassName={classes.active} to="/products">Products</NavLink>
             </li>
         </ul>
         </nav>
