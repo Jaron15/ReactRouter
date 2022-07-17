@@ -1,11 +1,16 @@
 import {Fragment} from 'react'
 import QuoteList from '../components/quotes/QuoteList';
 
+const DUMMY_QUOTES = [
+    {id: 'q1', author: 'Max', text: 'Learning React is fun!'},  
+    {id: 'q2', author: 'Bob', text: 'Learning React is great!'},  
+] 
+
 const Quotes = () => {
+
   return (
     <Fragment>
-    <h1>All Quotes</h1>
-    {/* <QuoteList /> */}
+    <QuoteList quotes={DUMMY_QUOTES}/>
     </Fragment>
   )
 }
