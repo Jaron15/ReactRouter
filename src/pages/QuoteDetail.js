@@ -1,8 +1,8 @@
 import {Fragment} from 'react'
-import QuoteItem from '../components/quotes/QuoteItem';
-import {useParams, Route} from 'react-router-dom';
+import {useParams, Route, Link} from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
+
 
 const DUMMY_QUOTES = [
     {id: 'q1', author: 'Max', text: 'Learning React is fun!'},  
@@ -24,6 +24,12 @@ const QuoteDetail = () => {
     text={quote.text}
     author={quote.author}  
     />
+
+    <Route path={`/quotes/${params.quoteId}`} exact>
+    <div className='centered'>
+    <Link className='btn--flat' to={`/quotes/${params.quoteId}/comments`}>Load Comments</Link>
+    </div>
+    </Route>
     <Route path={`/quotes/${params.quoteId}/comments`}>
        <Comments />
     </Route>
@@ -32,3 +38,6 @@ const QuoteDetail = () => {
 }
 
 export default QuoteDetail
+
+//we use a nested route here to bring up the comments button only if the exact path that doesnt have 'comments' in it is active
+//once you click the comments button it changes the link to include comments which takes the button out 
