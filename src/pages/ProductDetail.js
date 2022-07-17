@@ -7,6 +7,7 @@ console.log(params.productId);
 
   return (
     <section>
+        Product Details
     <div>{params.productId}</div>
     </section>
   )
