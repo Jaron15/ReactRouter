@@ -30,7 +30,12 @@ const QuoteList = (props) => {
 
 //set the query params to whatever the opposite is when the button is clicked (desc if its on asc and asc if its already on desc) 
   const changeSortingHandler = () => {
-    history.push('/quotes?sort=' + (isSortingAscending ? 'desc' : 'asc'));
+  //(cleaner approach for push)
+    history.push({
+      pathname: location.pathname,
+      search: `?sort=${(isSortingAscending ? 'desc' : 'asc')}`
+    })
+    // history.push(`${location.pathname}?sort=${(isSortingAscending ? 'desc' : 'asc')}`);
   }
   return (
     <Fragment>
