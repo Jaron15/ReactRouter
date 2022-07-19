@@ -1,31 +1,51 @@
-import {Fragment} from 'react'
+import {Fragment, useEffect} from 'react'
 import {useParams, Route, Link, useRouteMatch} from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
+import useHttp from '../hooks/use-http';
+import {getSingleQuote} from '../lib/api';
 
 
-const DUMMY_QUOTES = [
-    {id: 'q1', author: 'Max', text: 'Learning React is fun!'},  
-    {id: 'q2', author: 'Bob', text: 'Learning React is great!'},  
-] 
 
 
 const QuoteDetail = () => {
     const match = useRouteMatch();
     const params = useParams();
+//you want to be as specific as you can when using this as a dependency therefore we destructure the id out of params
+//if you just do params.quoteId the effect would run everytime the params changed at all
+    const {quoteId} = params;
 
-    console.log(match);
+    const {sendRequest, status, data: loadedQuote, error} = 
+    useHttp(
+      getSingleQuote,
+      true);
 
-    const quote = DUMMY_QUOTES.find((quote) => quote.id === params.quoteId)
+    useEffect(() => {
+      sendRequest(quoteId);
+    }, [sendRequest, quoteId])
 
-    if (!quote) {
-        return <p>No Quote Found</p>
+
+    if (status === 'pending') {
+      return (
+        <div className='centered'>
+          <LoadingSpinner />
+        </div>
+      )
     }
+
+    if (error) {
+      return <p className='centered'>{error}</p>
+    }
+    if (!loadedQuote.text) {
+      return <p>No Quote Found</p>
+    }
+   
   return (
     <Fragment>
     <HighlightedQuote 
-    text={quote.text}
-    author={quote.author}  
+    text={loadedQuote.text}
+    author={loadedQuote.author}  
     />
 
     <Route path={match.path} exact>
