@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useHttp from '../../hooks/use-http';
 import { getAllComments } from '../../lib/api';
@@ -14,8 +14,10 @@ const Comments = () => {
 
   const {quoteId} = params
 
+  //run the http request with the get all comments reducer function and pull out the following properties 
   const {sendRequest, status, data: loadedComments} = useHttp(getAllComments);
 
+  //this effect getsAllComments when the quoteId changes
   useEffect(() => {
     sendRequest(quoteId)
   }, [quoteId, sendRequest])
@@ -23,10 +25,12 @@ const Comments = () => {
   const startAddCommentHandler = () => {
     setIsAddingComment(true);
   };
-
-  const addedCommentHandler = () => {
-
-  }
+//useCallback to prevent the function within it to be rendered everytime 'Comments' is rendered
+// which would cause an infinite loop since the addCommentHandler is 
+//a dependency for an effect in NewComment, where this function is passed through props 
+  const addedCommentHandler = useCallback(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId])
 
   let comments;
   if (status === 'pending') {

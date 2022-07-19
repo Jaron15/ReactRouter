@@ -16,11 +16,14 @@ const QuoteDetail = () => {
 //if you just do params.quoteId the effect would run everytime the params changed at all
     const {quoteId} = params;
 
+    //pull out the function to request a single quote and the status/data/error props of it 
     const {sendRequest, status, data: loadedQuote, error} = 
     useHttp(
       getSingleQuote,
       true);
 
+//the first time this is rendered it will send a request so get a single quote using the quoteId
+//it will only rerun if the quoteId changes
     useEffect(() => {
       sendRequest(quoteId);
     }, [sendRequest, quoteId])

@@ -10,12 +10,14 @@ const AddQuote = () => {
 //the useHistory hook allows you to push the user to a different route and allow them to go back to the previous route with the back arrow in the browser
     const history = useHistory()
 
+// when the status of req is changed check to see if its completed then push back to /quotes 
     useEffect(() => {
         if (status === 'completed') {
             history.push('/quotes')
         }
     }, [status, history])
 
+    // send quote to back end with http hook using addQuote reducer function
     const addQuoteHandler = (quoteData) => {
         sendRequest(quoteData);
     }

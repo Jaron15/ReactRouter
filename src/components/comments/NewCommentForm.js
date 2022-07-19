@@ -8,11 +8,15 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
-  
+  //use the http hook to run the addComment reducer function and pull out the following properties 
   const {sendRequest, status, error} = useHttp(addComment)
 
   const {onAddedComment} = props;
   
+//everytime the 'status' (which is extracted above) changes or gives an error
+//this function will run and and it will update the comments section to reflect the mose recent
+//comments by running the onAdddComment() which is defined in comment.js
+//*IF the status is complete and without errors
   useEffect(() => {
     if (status === 'completed' && !error) {
       onAddedComment();
