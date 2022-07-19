@@ -17,7 +17,7 @@ const Comments = () => {
   //run the http request with the get all comments reducer function and pull out the following properties 
   const {sendRequest, status, data: loadedComments} = useHttp(getAllComments);
 
-  //this effect getsAllComments when the quoteId changes
+  //this effect getsAllComments when the quoteId or sendRequest() changes
   useEffect(() => {
     sendRequest(quoteId)
   }, [quoteId, sendRequest])
