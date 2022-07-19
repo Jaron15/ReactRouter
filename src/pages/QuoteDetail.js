@@ -6,8 +6,16 @@ import LoadingSpinner from '../components/UI/LoadingSpinner';
 import useHttp from '../hooks/use-http';
 import {getSingleQuote} from '../lib/api';
 
+//REACT-ROUTER-6 CHANGES 
+//When using nested routes in v6 you have to wrap any Route in a Routes component
+//any route path that is going to contain nested route must be defined with a /* at the end 
+//EX. (in app.js) <Route path='/quotes/:quoteId/*' .../>
 
+//the nested route would then not need to define the first part of the path just the variable at the end
+//EX. <Route path="comments" .../>
 
+//if you decide to write the nested route in the app.js with the other routes,
+//you can render that nested route in your JSX with the 'Outlet' component 
 
 const QuoteDetail = () => {
     const match = useRouteMatch();

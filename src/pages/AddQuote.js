@@ -4,6 +4,11 @@ import { useHistory } from 'react-router-dom';
 import useHttp from '../hooks/use-http';
 import {addQuote} from '../lib/api';
 
+//REACT-ROUTER-6 CHANGES
+//useHistory doesnt exist it is replaced by useNavigate
+//it would be defined the same and to use it an example would be 
+//navigate('/quotes') and if you wanted to replace navigate('/quotes', {replace: true})
+
 const AddQuote = () => {
     const {sendRequest, status} = useHttp(addQuote);
 

@@ -5,6 +5,8 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
 
+//IN REACT ROUTER V6 there is no Prompt component 
+
 const QuoteForm = (props) => {
   const authorInputRef = useRef();
   const textInputRef = useRef();
