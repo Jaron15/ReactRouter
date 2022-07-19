@@ -17,6 +17,8 @@ I also left notes at the top of the following files to breakdown all of the chan
 ** comments/Comments.js ** 
 ![image](https://user-images.githubusercontent.com/87290877/179838772-03476ac9-1880-48fa-845a-7642f21f4cab.png)
 
+# Deployed app 
+https://react-router-9cd1d.web.app
 
 # Installation 
 You can copy this repository and install the packages with npm i to use this application with npm start and look through the notes to help clarify processes.
